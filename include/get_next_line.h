@@ -7,9 +7,13 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE  50000
+#endif
+
 char	*get_next_line(int fd);
 char	*get_next_line2(char *str);
-size_t	ft_strlen(char *s);
+size_t	ft_strlen(const char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 

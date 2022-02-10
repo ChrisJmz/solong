@@ -1,4 +1,15 @@
-#include "../include/get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 14:02:08 by cjimenez          #+#    #+#             */
+/*   Updated: 2021/12/22 12:15:06 by cjimenez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "get_next_line.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -28,6 +39,7 @@ char	*ft_strchr(char *s, int c)
 		if (s[i] == (char)c)
 			return (p);
 		i++;
+		p++;
 	}
 	return (0);
 }
@@ -45,8 +57,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = (char *)malloc(sizeof(char) * 1);
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
-		return (NULL);
 	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!p)
 		return (NULL);

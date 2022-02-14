@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 16:02:50 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/14 08:51:41 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/02/11 11:04:57 by cmsjus            #+#    #+#             */
+/*   Updated: 2022/02/14 08:51:20 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-int	ft_isdigit(int c)
+char	*ft_strncpy(char *str, int nb)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	int		i;
+	char	*ret;
+
+	i = 0;
+	ret = (char *)malloc(sizeof(char) * (nb + 1));
+	if (!ret)
+		return (NULL);
+	while (str[i] && i < nb)
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:15:23 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/06 15:09:27 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:52:27 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static int	size(int n)

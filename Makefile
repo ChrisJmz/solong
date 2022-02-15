@@ -6,7 +6,7 @@
 #    By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/02/14 10:19:16 by cjimenez         ###   ########.fr        #
+#    Updated: 2022/02/15 15:50:27 by cjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,10 @@ SRC =	srcs/solong.c			\
 		srcs/map_utils.c		\
 		srcs/wall_parsing.c		\
 		srcs/content_parsing.c	\
+		srcs/init.c				\
+		srcs/key.c				\
 
-INC =   include/so_long.h           \
+INC =   include/so_long.h		\
 
 LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lX11
 

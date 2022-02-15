@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 11:03:12 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/14 08:51:35 by cjimenez         ###   ########.fr       */
+/*   Created: 2021/12/13 15:37:16 by cjimenez          #+#    #+#             */
+/*   Updated: 2022/02/15 11:02:52 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr(char *str)
+void	ft_putstr(const char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(str[i])
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }

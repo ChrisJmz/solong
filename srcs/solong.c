@@ -6,11 +6,59 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:29:51 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/14 11:38:23 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:35:22 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/solong.h"
+
+static void	ft_mlx_put(t_data *mlx, void *path, int f, int g)
+{
+	mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, path, GAMESIZE * f, GAMESIZE * g);
+}
+
+static void ft_put_content2(t_data *mlx, int x, int y, char **map)
+{
+    int k;
+    int l;
+
+    k = 1;
+    while (k < x - 1)
+    {
+        l = 1;
+        while (l < y - 1)
+        {
+            if (map[l][k] == '1')
+                ft_mlx_put(mlx, mlx->img.wall, k, l);
+            else if (map[l][k] != '1')
+                ft_mlx_put(mlx, mlx->img.floor, k, l);
+            l++;
+        }
+        k++;
+    }
+}
+
+void    ft_put_content(t_data *mlx, int x, int y, char **map)
+{
+    int i;
+    int j;
+
+    i = -1;
+    j = -1;
+    mlx->img.wall = ft_put_img(mlx, "xpm/wall.xpm");
+    mlx->img.floor = ft_put_img(mlx, "xpm/floor.xpm");
+    while(++i < y)
+    {
+        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->img.wall, 0, GAMESIZE * i);
+        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->img.wall, (x - 1) * GAMESIZE, GAMESIZE * i);
+    }
+    while(++j < x)
+    {
+        ft_mlx_put(mlx, mlx->img.wall, j, 0);
+        ft_mlx_put(mlx, mlx->img.wall, j, (y - 1));
+    }
+    ft_put_content2(mlx, x, y, map);
+}
 
 int main(int ac, char **av)
 {
@@ -30,6 +78,7 @@ int main(int ac, char **av)
                 i++;
             }
             printf("\n");
+            ft_init(&data);
         }
     }
     else

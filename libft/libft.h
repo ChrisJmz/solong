@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:07:57 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/14 07:58:04 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:10:27 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+# include <stddef.h>
+# include <stdarg.h>
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE    500
 #endif
@@ -23,7 +26,7 @@ int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 char	*ft_itoa(int n);
 void    ft_putchar(char c);
-void    ft_putstr(char *str);
+void    ft_putstr(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);

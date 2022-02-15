@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 14:58:53 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/15 11:02:42 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/02/15 13:19:42 by cjimenez          #+#    #+#             */
+/*   Updated: 2022/02/15 13:44:16 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/solong.h"
 
-void	ft_putchar(char c)
+int ft_close(int keycode, t_img *img)
 {
-	write(1, &c, 1);
+    if (keycode == 53 || keycode < 0)
+    {
+        mlx_destroy_window(img->mlx_ptr, img->mlx_win);
+        exit(0);
+    }
+    return (0);
+}
+
+int ft_close_game(t_img *vars)
+{
+    mlx_destroy_window(vars->mlx_ptr, vars->mlx_win);
+    printf("Goodbye!\n");
+    exit(0);
 }

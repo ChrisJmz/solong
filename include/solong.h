@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:05:52 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/14 10:18:58 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:44:31 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,58 +31,56 @@
 # define KEY_RIGHT      65363
 # define KEY_ESC        65307
 # define MLX_ERROR      1
+# define GAMESIZE       32
 
 typedef struct s_img
 {
-    void    *img_background;
-    void    *img_player;
-    void    *img_exit;
-    void    *img_wall;
-    void    *img_collectible;
-    int     width;
-    int     height;
-    char    *player;
-    char    *background;
-    char    *wall;
-    char    *collectible;
-    char    *exit;
+    void    *mlx_ptr;
+    void    *mlx_win;
+    void    *left;
+    void    *right;
+    void    *up;
+    void    *down;
+    void    *wall;
+    void    *collectible;
+    void    *floor;
 }   t_img;
 
 typedef struct s_content
 {
-    char    exit;
-    char    collectible;
-    char    player;
-    char    wall;
-    char    space;
-    int     count_p;
-    int     count_e;
-    int     count_c;
+    void    *wall;
+    void    *collectible;
+    void    *floor;
+    void    *exit;
+    int     collnbr;
+    int     collnbrmax;
 }   t_content;
-
-typedef struct s_pos
-{
-    int x;
-    int y;
-}   t_pos;
 
 typedef struct s_data
 {
-    void        *mlx_ptr;
-    void        *mlx_win;
-    int         width;
-    int         height;
-    char        **map;
+    int     x;
+    int     y;
+    int     x_size;
+    int     y_size;
+    char    **map;
+    int     data1;
+    int     data2;
+    int     count;
     t_content   content;
     t_img       img;
-    t_pos       pos;
-    int         count;
 }   t_data;
 
 int   ft_file_name(char *file);
 int	ft_error(char *str);
+int ft_strsize(char **str);
+int	ft_get_nbr(char **str, char c);
 char    **ft_fill_map(char *av);
 int ft_parse_map(char **map);
 int ft_content(char **str);
+void	*ft_put_img(t_data *data, char *path);
+void    ft_put_content(t_data *mlx, int x, int y, char **map);
+void    ft_init(t_data *data);
+int ft_close(int keycode, t_img *img);
+int ft_close_game(t_img *vars);
 
 #endif

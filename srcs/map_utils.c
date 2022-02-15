@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 07:39:59 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/14 11:32:58 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:26:43 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	**ft_fill_map(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr("file not found\n");
+		printf("file not found\n");
 		exit(0);
 	}
 	size = ft_count_size(av);
-	map = malloc(sizeof(char) * (size + 1));
+	map = malloc(sizeof(char *) * (size + 1));
 	str = get_next_line(fd);
 	while (str)
 	{
@@ -60,4 +60,14 @@ char	**ft_fill_map(char *av)
 	free(str);
 	close(fd);
 	return (map);    
+}
+
+void	*ft_put_img(t_data *data, char *path)
+{
+	int	a;
+	int	b;
+
+	a = 0;
+	b = 0;
+	return (mlx_xpm_file_to_image(data->img.mlx_ptr, path, &a, &b));
 }

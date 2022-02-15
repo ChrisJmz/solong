@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:06:01 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/14 10:56:03 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:44:16 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,26 @@ int	ft_file_name(char *file)
 		&& file[i - 2] != 'b' && file[i - 3] != '.')
 		return (ft_error("Usage: ./solong [map.ber] (from ft_file_name)\n"), 1);
 	return (0);
+}
+
+int	ft_get_nbr(char **str, char c)
+{
+	int	res;
+	int	i;
+	int	j;
+
+	i = 0;
+	res = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == c)
+				res++;
+			j++;
+		}
+		i++;
+	}
+	return (res);
 }

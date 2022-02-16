@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:05:52 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/15 13:44:31 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:07:11 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,12 @@ int ft_content(char **str);
 void	*ft_put_img(t_data *data, char *path);
 void    ft_put_content(t_data *mlx, int x, int y, char **map);
 void    ft_init(t_data *data);
-int ft_close(int keycode, t_img *img);
 int ft_close_game(t_img *vars);
+int ft_input(int keycode, t_data *data);
+int ft_move_right(t_data *data, int x, int y);
+int ft_move_left(t_data *data, int x, int y);
+int ft_move_up(t_data *data, int x, int y);
+int ft_move_down(t_data *data, int x, int y);
+int	ft_end(t_data *data);
 
 #endif

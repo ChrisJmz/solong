@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:29:51 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/15 15:35:22 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:52:43 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,16 @@ static void ft_put_content2(t_data *mlx, int x, int y, char **map)
         while (l < y - 1)
         {
             if (map[l][k] == '1')
-                ft_mlx_put(mlx, mlx->img.wall, k, l);
+                ft_mlx_put(mlx, mlx->content.wall, k, l);
             else if (map[l][k] != '1')
-                ft_mlx_put(mlx, mlx->img.floor, k, l);
+                ft_mlx_put(mlx, mlx->content.floor, k, l);
+            if (map[l][k] == 'C')
+            {
+                mlx->content.collnbrmax++;
+                ft_mlx_put(mlx, mlx->content.collectible, k, l);
+            }
+            if (map[l][k] == 'E')
+                ft_mlx_put(mlx, mlx->content.exit, k, l);
             l++;
         }
         k++;
@@ -45,12 +52,14 @@ void    ft_put_content(t_data *mlx, int x, int y, char **map)
 
     i = -1;
     j = -1;
-    mlx->img.wall = ft_put_img(mlx, "xpm/wall.xpm");
-    mlx->img.floor = ft_put_img(mlx, "xpm/floor.xpm");
+    mlx->content.wall = ft_put_img(mlx, "xpm/wall.xpm");
+    mlx->content.floor = ft_put_img(mlx, "xpm/floor.xpm");
+    mlx->content.collectible = ft_put_img(mlx, "xpm/collectible.xpm");
+    mlx->content.exit = ft_put_img(mlx, "xpm/exit.xpm");
     while(++i < y)
     {
-        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->img.wall, 0, GAMESIZE * i);
-        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->img.wall, (x - 1) * GAMESIZE, GAMESIZE * i);
+        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->content.wall, 0, GAMESIZE * i);
+        mlx_put_image_to_window(mlx->img.mlx_ptr, mlx->img.mlx_win, mlx->content.wall, (x - 1) * GAMESIZE, GAMESIZE * i);
     }
     while(++j < x)
     {

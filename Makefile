@@ -6,7 +6,7 @@
 #    By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/02/15 15:50:27 by cjimenez         ###   ########.fr        #
+#    Updated: 2022/02/16 09:42:57 by cjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC =	srcs/solong.c			\
 		srcs/content_parsing.c	\
 		srcs/init.c				\
 		srcs/key.c				\
+		srcs/movements.c		\
 
 INC =   include/so_long.h		\
 

@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:15:10 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/15 15:47:28 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/16 11:04:59 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int ft_content_pos_y(char **map, char c)
 
 void    *init_content(t_data *data)
 {
+    data->content.collnbr = 0;
     data->x = ft_strlen(data->map[1]) - 1;
     data->y = ft_strsize(data->map);
     data->x_size = ft_content_pos_x(data->map, 'P');
@@ -64,7 +65,8 @@ void    *init_content(t_data *data)
     data->data2 = (data->y_size % data->y * GAMESIZE);
     data->img.mlx_ptr = mlx_init();
     data->img.wall = ft_put_img(data, "xpm/wall.xpm");
-    data->img.left = ft_put_img(data, "xpm/player.xpm");
+    data->img.right = ft_put_img(data, "xpm/right.xpm");
+    data->img.left = ft_put_img(data, "xpm/left.xpm");
     data->img.floor = ft_put_img(data, "xpm/floor.xpm");
     data->img.mlx_win = mlx_new_window(data->img.mlx_ptr, data->x * GAMESIZE, data->y * GAMESIZE, "solong");
     if (!data->img.mlx_win)
@@ -79,7 +81,8 @@ void    ft_init(t_data *data)
 {
     data = init_content(data);
     ft_put_content(data, data->x, data->y, data->map);
-    mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.left, data->data1, data->data2);
+    mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.right, data->data1, data->data2);
     mlx_hook(data->img.mlx_win, 17, 0L, ft_close_game, &data->img);
+    mlx_key_hook(data->img.mlx_win, ft_input, data);
     mlx_loop(data->img.mlx_ptr);
 }

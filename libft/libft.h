@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:07:57 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/15 11:10:27 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/16 09:54:56 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ char	*get_next_line(int fd);
 char	*ft_strchr(char *s, int c);
 char	*get_next_line2(char *str);
 char	*ft_strjoin(char *s1, char *s2);
+void    ft_swap(char *s1, char *s2);
+int ft_content_pos_x(char **map, char c);
+int ft_content_pos_y(char **map, char c);
 
 #endif

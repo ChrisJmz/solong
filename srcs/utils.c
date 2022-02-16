@@ -46,7 +46,7 @@ int	ft_get_nbr(char **str, char c)
 	int	j;
 
 	i = 0;
-	res = 0;
+	res = -1;
 	while (str[i])
 	{
 		j = 0;
@@ -59,4 +59,20 @@ int	ft_get_nbr(char **str, char c)
 		i++;
 	}
 	return (res);
+}
+
+int	ft_end(t_data *data)
+{	
+	//int i;
+
+	//i = 0;
+	printf("gg mon reuf\n");
+	/*while (!data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}*/
+	free(data->map);
+	data->map = NULL;
+	exit(0);
 }

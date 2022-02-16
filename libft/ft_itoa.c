@@ -6,59 +6,57 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:15:23 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/14 08:52:27 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:45:21 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size(int n)
+static int	ft_size(int n)
 {
-	int	i;
+	int	size;
 
-	i = 0;
+	size = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
-		n *= -1;
-	while (n != 0)
+	{
+		n = n * -1;
+		size++;
+	}
+	while (n)
 	{
 		n /= 10;
-		i++;
+		size++;
 	}
-	return (i);
+	return (size);
 }
 
-int	ft_hitoa(char *tab, long int nb, int i, int count)
+char	*ft_itoa(int nbr)
 {
+	long int	nb;
+	int			size;
+	char		*str;
+
+	nb = nbr;
+	size = ft_size(nb);
+	str = malloc(sizeof(char) * size);
+	if (!str)
+		return (NULL);
 	if (nb < 0)
 	{
-		nb *= -1;
-		tab[0] = '-';
-		i++;
+		str[0] = '-';
+		nb = nb * -1;
 	}
-	tab[count] = '\0';
-	while (count-- > i)
+	if (nb == 0)
+		str[0] = '0';
+	size--;
+	str[size] = '\0';
+	while(nb)
 	{
-		tab[count] = (nb % 10) + '0';
-		nb /= 10;
-	}
-	return (nb);
-}
-
-char	*ft_itoa(int n)
-{
-	int			i;
-	int			count;
-	char		*tab;
-	long int	nb;
-
-	i = 0;
-	nb = n;
-	count = size(nb);
-	if (nb < 0 || count == 0)
-		count++;
-	tab = malloc(sizeof(char) * count + 1);
-	if (!tab)
-		return (NULL);
-	ft_hitoa(tab, nb, i, count);
-	return (tab);
+		str[size - 1] = nb % 10 + '0';
+		nb = nb / 10;
+		size--;
+	} 
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:01:49 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/14 09:13:17 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:35:55 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_read(int fd, char *str)
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static char		*str;
+	static char		*str = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);

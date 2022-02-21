@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 07:39:59 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/15 12:26:43 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:47:38 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ char	**ft_fill_map(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("file not found\n");
+		printf("Map is empty!\n");
 		exit(0);
 	}
 	size = ft_count_size(av);
 	map = malloc(sizeof(char *) * (size + 1));
+	if (!map)
+		return (NULL);
 	str = get_next_line(fd);
 	while (str)
 	{

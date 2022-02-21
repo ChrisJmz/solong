@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:06:01 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/15 13:44:16 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:18:13 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@ int	ft_file_name(char *file)
 {
 	int	i;
 
-	i = 0;
-	while (file[i])
-		i++;
+	i = ft_strlen(file);
 	i--;
-	if (file[i] != 'r' && file[i - 1] != 'e'
-		&& file[i - 2] != 'b' && file[i - 3] != '.')
-		return (ft_error("Usage: ./solong [map.ber] (from ft_file_name)\n"), 1);
-	return (0);
+	if ((file[i] == 'r' && file[i - 1] == 'e'
+		&& file[i - 2] == 'b' && file[i - 3] == '.'))
+		return (0);
+	else
+	{
+		printf("File type not supported!\n");
+		return (1);
+	}
 }
 
 int	ft_get_nbr(char **str, char c)
@@ -46,7 +48,7 @@ int	ft_get_nbr(char **str, char c)
 	int	j;
 
 	i = 0;
-	res = -1;
+	res = 0;
 	while (str[i])
 	{
 		j = 0;
@@ -61,18 +63,8 @@ int	ft_get_nbr(char **str, char c)
 	return (res);
 }
 
-int	ft_end(t_data *data)
-{	
-	//int i;
-
-	//i = 0;
-	printf("gg mon reuf\n");
-	/*while (!data->map[i])
-	{
-		free(data->map[i]);
-		i++;
-	}*/
-	free(data->map);
-	data->map = NULL;
+int	ft_end(char *str)
+{
+	printf("%s", str);
 	exit(0);
 }

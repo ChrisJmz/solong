@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:05:52 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/16 10:07:11 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:29:43 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ typedef struct s_img
     void    *mlx_win;
     void    *left;
     void    *right;
-    void    *up;
-    void    *down;
     void    *wall;
     void    *collectible;
     void    *floor;
+    void    *moves;
 }   t_img;
 
 typedef struct s_content
@@ -86,6 +85,10 @@ int ft_move_right(t_data *data, int x, int y);
 int ft_move_left(t_data *data, int x, int y);
 int ft_move_up(t_data *data, int x, int y);
 int ft_move_down(t_data *data, int x, int y);
-int	ft_end(t_data *data);
+int	ft_end(char *str);
+int	ft_replace_collectible_right(t_data *vars, int x, int y);
+int	ft_replace_collectible_up(t_data *vars, int x, int y);
+int	ft_replace_collectible_left(t_data *vars, int x, int y);
+int	ft_replace_collectible_down(t_data *vars, int x, int y);
 
 #endif

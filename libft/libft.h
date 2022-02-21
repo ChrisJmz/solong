@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:07:57 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/16 09:54:56 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:00:00 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ char	*ft_strjoin(char *s1, char *s2);
 void    ft_swap(char *s1, char *s2);
 int ft_content_pos_x(char **map, char c);
 int ft_content_pos_y(char **map, char c);
+int	ft_printf(const char *str, ...);
+int	ft_printf_s(va_list arg);
+int	ft_printf_d(va_list arg);
+int	ft_params(char flag, va_list arg);
 
 #endif

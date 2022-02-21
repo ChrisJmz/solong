@@ -6,7 +6,7 @@
 #    By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 15:42:20 by nguiard           #+#    #+#              #
-#    Updated: 2022/02/16 09:42:57 by cjimenez         ###   ########.fr        #
+#    Updated: 2022/02/21 17:34:35 by cjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC =	srcs/solong.c			\
 		srcs/init.c				\
 		srcs/key.c				\
 		srcs/movements.c		\
+		srcs/collectible.c		\
 
 INC =   include/so_long.h		\
 
@@ -34,9 +35,6 @@ all: $(NAME)
 $(NAME):
 	make -C libft
 	gcc $(FLAGS) -o $(NAME) $(SRC) $(LIB)
-
-g: all
-	gcc -g -fsanitize=address $(FLAGS) -o $(NAME) $(SRC) $(LIB)
 
 skiperror:
 	gcc -o $(NAME) $(SRC) -g $(LIB)

@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:15:10 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/16 11:04:59 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:51:09 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void    *init_content(t_data *data)
     data->y = ft_strsize(data->map);
     data->x_size = ft_content_pos_x(data->map, 'P');
     data->y_size = ft_content_pos_y(data->map, 'P');
-    printf("pos_x :%d  pos_y : %d\n", data->x_size, data->y_size);
     data->content.collnbrmax = ft_get_nbr(data->map, 'C');
     data->data1 = (data->x_size % data->x * GAMESIZE);
     data->data2 = (data->y_size % data->y * GAMESIZE);
@@ -68,12 +67,8 @@ void    *init_content(t_data *data)
     data->img.right = ft_put_img(data, "xpm/right.xpm");
     data->img.left = ft_put_img(data, "xpm/left.xpm");
     data->img.floor = ft_put_img(data, "xpm/floor.xpm");
+    data->img.moves = ft_put_img(data, "xpm/TEST.xpm");
     data->img.mlx_win = mlx_new_window(data->img.mlx_ptr, data->x * GAMESIZE, data->y * GAMESIZE, "solong");
-    if (!data->img.mlx_win)
-    {
-        free(data->img.mlx_win);
-        exit(0);
-    }
     return (data);
 }
 

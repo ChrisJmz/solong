@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:15:23 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/16 10:45:21 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:41:23 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_size(int n)
 {
 	int	size;
 
-	size = 0;
+	size = 1;
 	if (n == 0)
 		return (1);
 	if (n < 0)
@@ -26,7 +26,7 @@ static int	ft_size(int n)
 	}
 	while (n)
 	{
-		n /= 10;
+		n = n / 10;
 		size++;
 	}
 	return (size);

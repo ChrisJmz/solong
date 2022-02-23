@@ -63,8 +63,29 @@ int	ft_get_nbr(char **str, char c)
 	return (res);
 }
 
-int	ft_end(char *str)
+int	ft_end(char *str, t_data *data)
 {
+	int i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	mlx_destroy_image(data->img.mlx_ptr, data->content.wall);
+	mlx_destroy_image(data->img.mlx_ptr, data->content.exit);
+	mlx_destroy_image(data->img.mlx_ptr, data->content.floor);
+	mlx_destroy_image(data->img.mlx_ptr, data->content.collectible);
+	mlx_destroy_window(data->img.mlx_ptr, data->img.mlx_win);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.left);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.right);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.moves);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.floor);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.wall);
+	mlx_destroy_display(data->img.mlx_ptr);
+	free(data->img.mlx_ptr);
 	printf("%s", str);
 	exit(0);
 }

@@ -63,6 +63,11 @@ void    *init_content(t_data *data)
     data->data1 = (data->x_size % data->x * GAMESIZE);
     data->data2 = (data->y_size % data->y * GAMESIZE);
     data->img.mlx_ptr = mlx_init();
+    if (data->img.mlx_ptr == NULL)
+    {
+        free(data->img.mlx_ptr);
+        return (NULL);
+    }
     data->img.wall = ft_put_img(data, "xpm/wall.xpm");
     data->img.right = ft_put_img(data, "xpm/right.xpm");
     data->img.left = ft_put_img(data, "xpm/left.xpm");
@@ -75,9 +80,11 @@ void    *init_content(t_data *data)
 void    ft_init(t_data *data)
 {
     data = init_content(data);
+    if (data == NULL)
+        return ;
     ft_put_content(data, data->x, data->y, data->map);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.right, data->data1, data->data2);
-    mlx_hook(data->img.mlx_win, 17, 0L, ft_close_game, &data->img);
+    mlx_hook(data->img.mlx_win, 17, 0L, ft_close_game, data);
     mlx_key_hook(data->img.mlx_win, ft_input, data);
     mlx_loop(data->img.mlx_ptr);
 }

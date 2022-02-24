@@ -22,17 +22,16 @@ int ft_input(int keycode, t_data *data)
     y = data->y_size;
     if (keycode == KEY_ESC)
     {
-        ft_end("Goodbye!\n", data);
-        exit(0);
+        ft_end("Goodbye!\n", data, 0);
     }
     else if ((keycode == KEY_W || keycode == KEY_UP) && ft_move_up(data, x, y) == 0)
-        ft_printf("moves: %d\n", ++move);
+        ft_printf("moves: \033[33m%d\033[0m\n", ++move);
     else if ((keycode == KEY_A || keycode == KEY_LEFT) && ft_move_left(data, x, y) == 0)
-        ft_printf("moves: %d\n", ++move);
+        ft_printf("moves: \033[33m%d\033[0m\n", ++move);
     else if ((keycode == KEY_S || keycode == KEY_DOWN) && ft_move_down(data, x, y) == 0)
-        ft_printf("moves: %d\n", ++move);
+        ft_printf("moves: \033[33m%d\033[0m\n", ++move);
     else if ((keycode == KEY_D || keycode == KEY_RIGHT) && ft_move_right(data, x, y) == 0)
-        ft_printf("moves: %d\n", ++move);
+        ft_printf("moves: \033[33m%d\033[0m\n", ++move);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.wall, 0, 0);
     cmove = ft_itoa(move);
     if (cmove != NULL)
@@ -46,6 +45,6 @@ int ft_input(int keycode, t_data *data)
 
 int ft_close_game(t_data *data)
 {
-    ft_end("Goodbye!\n", data);
-    exit(0);
+    ft_end("Goodbye!\n", data, 0);
+    return (0);
 }

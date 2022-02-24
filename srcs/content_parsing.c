@@ -81,6 +81,9 @@ static int ft_check_exit(char **str)
 int ft_content(char **str)
 {
     if (ft_check_player(str) < 1 || ft_check_collectible(str) < 1 || ft_check_exit(str) < 1)
-        return (ft_error("Something's missing inside the map\n"), 1);
+    {
+        ft_freemap(str);
+        return (ft_error("Something's wrong inside the map !"));
+    }
     return (0);
 }

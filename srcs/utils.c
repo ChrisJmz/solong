@@ -14,15 +14,8 @@
 
 int	ft_error(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(2, &str[i], 1);
-		i++;
-	}
-	return (0);
+	ft_printf("\033[31m%s\033[0m\n", str);
+	return (1);
 }
 
 int	ft_file_name(char *file)
@@ -36,7 +29,7 @@ int	ft_file_name(char *file)
 		return (0);
 	else
 	{
-		printf("File type not supported!\n");
+		ft_error("File type not supported!");
 		return (1);
 	}
 }
@@ -63,17 +56,9 @@ int	ft_get_nbr(char **str, char c)
 	return (res);
 }
 
-int	ft_end(char *str, t_data *data)
+void	ft_end(char *str, t_data *data, int ret)
 {
-	int i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		free(data->map[i]);
-		i++;
-	}
-	free(data->map);
+	ft_freemap(data->map);
 	mlx_destroy_image(data->img.mlx_ptr, data->content.wall);
 	mlx_destroy_image(data->img.mlx_ptr, data->content.exit);
 	mlx_destroy_image(data->img.mlx_ptr, data->content.floor);
@@ -86,6 +71,19 @@ int	ft_end(char *str, t_data *data)
 	mlx_destroy_image(data->img.mlx_ptr, data->img.wall);
 	mlx_destroy_display(data->img.mlx_ptr);
 	free(data->img.mlx_ptr);
-	printf("%s", str);
-	exit(0);
+	ft_printf("\033[33m%s\033[0m", str);
+	exit(ret);
+}
+
+void	ft_freemap(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

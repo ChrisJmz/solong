@@ -44,8 +44,8 @@ char	**ft_fill_map(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Map is empty!\n");
-		exit(0);
+		ft_error("Map is empty!");
+		exit(1);
 	}
 	size = ft_count_size(av);
 	map = malloc(sizeof(char *) * (size + 1));

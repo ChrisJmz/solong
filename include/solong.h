@@ -84,10 +84,11 @@ int ft_move_right(t_data *data, int x, int y);
 int ft_move_left(t_data *data, int x, int y);
 int ft_move_up(t_data *data, int x, int y);
 int ft_move_down(t_data *data, int x, int y);
-int	ft_end(char *str, t_data *data);
+void	ft_end(char *str, t_data *data, int ret);
 int	ft_replace_collectible_right(t_data *vars, int x, int y);
 int	ft_replace_collectible_up(t_data *vars, int x, int y);
 int	ft_replace_collectible_left(t_data *vars, int x, int y);
 int	ft_replace_collectible_down(t_data *vars, int x, int y);
+void	ft_freemap(char **map);
 
 #endif

@@ -32,6 +32,8 @@ static int  ft_check_walls(char **str)
     last = str[ft_strsize(str) - 1];
     if (ft_strsize(str) - 1 < 1)
         return (1);
+    if (first[0] != '1')
+        return (1);
     i = 0;
     while (first[i + 1])
     {
@@ -74,12 +76,18 @@ int ft_parse_map(char **map)
 
     i = 0;
     if (ft_check_walls(map) == 1)
-        return (ft_error("Problems with walls (top or bottom).\n"), 1);
+    {
+        ft_freemap(map);
+        return (ft_error("Problems with walls (top or bottom)."));
+    }
     i++;
     while(map[i])
     {
         if (ft_check_line(map[i]) == 1)
-            return (ft_error("Problems with walls (side walls).\n"), 1);
+        {
+            ft_freemap(map);
+            return (ft_error("Problems with walls (side walls)."));
+        }
         i++;
     }
     return (0);

@@ -81,21 +81,21 @@ int main(int ac, char **av)
             data.map = ft_fill_map(av[1]);
             if (ft_parse_map(data.map) == 0 && ft_content(data.map) == 0)
             {
-                ft_printf("Map found :\n");
+                ft_printf("\033[32mMap found :\033[00m\n\n");
                 while (data.map[i] != 0)    
                 {
                     ft_printf("%s", data.map[i]);
                     i++;
                 }
-                ft_printf("\n");
+                ft_printf("\n\n");
                 ft_init(&data);
             }
         }
     }
     else
     {
-        printf("Usage : ./so_long [map.ber]\n");
-        exit(0);
+        ft_printf("Usage : ./so_long [map.ber]\n");
+        exit(1);
     }
     return (0);
 }

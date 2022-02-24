@@ -38,7 +38,7 @@ int ft_move_right(t_data *data, int x, int y)
     else if (ft_collision(data->map[y][x], data->map[y][x + 1]) == 42)
     {
         if (data->content.collnbr == data->content.collnbrmax) 
-            ft_end("You won!\n", data, 0);
+            ft_end("\033[32m\nYou won!\033[0m\n", data, 0);
     }
     else
         ft_swap(&data->map[y][x + 1], &data->map[y][x]);
@@ -63,7 +63,7 @@ int ft_move_left(t_data *data, int x, int y)
     else if (ft_collision(data->map[y][x], data->map[y][x - 1]) == 42)
     {
         if (data->content.collnbr == data->content.collnbrmax)
-            ft_end("You won!\n", data, 0);
+            ft_end("Y\033[32m\nYou won!\033[0m\n", data, 0);
     }
     else
         ft_swap(&data->map[y][x - 1], &data->map[y][x]);
@@ -88,7 +88,7 @@ int ft_move_up(t_data *data, int x, int y)
     else if (ft_collision(data->map[y][x], data->map[y - 1][x]) == 42)
     {
         if (data->content.collnbr == data->content.collnbrmax)
-            ft_end("You won!\n", data, 0);
+            ft_end("\033[32mYou won!\033[0m\n", data, 0);
     }
     else
         ft_swap(&data->map[y - 1][x], &data->map[y][x]);
@@ -113,7 +113,7 @@ int ft_move_down(t_data *data, int x, int y)
     else if (ft_collision(data->map[y][x], data->map[y + 1][x]) == 42)
     {
         if (data->content.collnbr == data->content.collnbrmax)
-            ft_end("You won!\n", data, 0);
+            ft_end("\033[32m\nYou won!\033[0m\n", data, 0);
     }
     else
         ft_swap(&data->map[y + 1][x], &data->map[y][x]);

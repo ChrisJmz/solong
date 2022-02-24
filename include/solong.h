@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SOLONG_H
+# define SOLONG_H
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -30,7 +30,6 @@
 # define KEY_DOWN       65364
 # define KEY_RIGHT      65363
 # define KEY_ESC        65307
-# define MLX_ERROR      1
 # define GAMESIZE       32
 
 typedef struct s_img

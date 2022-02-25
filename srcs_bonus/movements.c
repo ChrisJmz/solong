@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:31:29 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/25 12:24:35 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:35:18 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int ft_collision(int current, int next)
 {
@@ -23,6 +23,8 @@ int ft_collision(int current, int next)
         return (2);
     else if (res == 149)
         return (42);
+    else if (res == 168)
+        return (84);
     return (0);
 }
 
@@ -40,6 +42,8 @@ int ft_move_right(t_data *data, int x, int y)
         if (data->collnbr == data->collnbrmax) 
             ft_end("\033[32m\nYou won!\033[0m\n", data, 0);
     }
+    else if (ft_collision(data->map[y][x], data->map[y][x + 1]) == 84)
+        ft_end("\nYou lost\n", data, 1);
     else
         ft_swap(&data->map[y][x + 1], &data->map[y][x]);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.floor, data->data1, data->data2);
@@ -65,6 +69,8 @@ int ft_move_left(t_data *data, int x, int y)
         if (data->collnbr == data->collnbrmax)
             ft_end("\033[32m\nYou won!\033[0m\n", data, 0);
     }
+    else if (ft_collision(data->map[y][x], data->map[y][x - 1]) == 84)
+        ft_end("\nYou lost\n", data, 1);
     else
         ft_swap(&data->map[y][x - 1], &data->map[y][x]);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.floor, data->data1, data->data2);
@@ -72,7 +78,7 @@ int ft_move_left(t_data *data, int x, int y)
     data->y_size = ft_content_pos_y(data->map, 'P');
     data->data1 = (data->x_size % data->x * GAMESIZE);
     data->data2 = (data->y_size % data->y * GAMESIZE);
-    mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.right, data->data1, data->data2);
+    mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.left, data->data1, data->data2);
     return (0);
 }
 
@@ -90,6 +96,8 @@ int ft_move_up(t_data *data, int x, int y)
         if (data->collnbr == data->collnbrmax)
             ft_end("\033[32mYou won!\033[0m\n", data, 0);
     }
+    else if (ft_collision(data->map[y][x], data->map[y - 1][x]) == 84)
+        ft_end("\nYou lost\n", data, 1);
     else
         ft_swap(&data->map[y - 1][x], &data->map[y][x]);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.floor, data->data1, data->data2);
@@ -115,6 +123,8 @@ int ft_move_down(t_data *data, int x, int y)
         if (data->collnbr == data->collnbrmax)
             ft_end("\033[32m\nYou won!\033[0m\n", data, 0);
     }
+    else if (ft_collision(data->map[y][x], data->map[y + 1][x]) == 84)
+        ft_end("\nYou lost\n", data, 1);
     else
         ft_swap(&data->map[y + 1][x], &data->map[y][x]);
     mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win, data->img.floor, data->data1, data->data2);

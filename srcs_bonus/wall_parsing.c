@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 08:50:52 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/25 12:24:31 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:35:24 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int ft_strsize(char **str)
 {
@@ -61,7 +61,7 @@ static int ft_check_line(char *str)
     i++;
     while (str[i + 1])
     {
-         if (str[i] != '1' && str[i] != '0' && str[i] != 'C' && str[i] != 'P' && str[i] != 'E')
+         if (str[i] != '1' && str[i] != '0' && str[i] != 'C' && str[i] != 'P' && str[i] != 'E' && str[i] != 'X')
             return (1);
         i++;
     }

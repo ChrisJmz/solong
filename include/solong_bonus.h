@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   solong_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:05:52 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/25 14:29:11 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:31:44 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <time.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -30,11 +31,14 @@ typedef struct s_img
 {
     void    *mlx_ptr;
     void    *mlx_win;
+    void    *left;
     void    *right;
     void    *wall;
     void    *floor;
     void    *exit;
     void    *collectible;
+    void    *moves;
+    void    *enemy;
 }   t_img;
 
 typedef struct s_data
@@ -60,7 +64,7 @@ char    **ft_fill_map(char *av);
 int ft_parse_map(char **map);
 int ft_content(char **str);
 void	*ft_put_img(t_data *data, char *path);
-void    ft_put_content(t_data *mlx, int x, int y, char **map);
+void    ft_put_content(t_data *data, int x, int y, char **map);
 void    ft_init(t_data *data);
 int ft_close_game(t_data *data);
 int ft_input(int keycode, t_data *data);
@@ -74,5 +78,10 @@ int	ft_replace_collectible_up(t_data *vars, int x, int y);
 int	ft_replace_collectible_left(t_data *vars, int x, int y);
 int	ft_replace_collectible_down(t_data *vars, int x, int y);
 void	ft_freemap(char **map);
+int ft_enemyr(t_data *data, int x, int y);
+int ft_enemyl(t_data *data, int x, int y);
+int ft_enemyu(t_data *data, int x, int y);
+int ft_enemyd(t_data *data, int x, int y);
+int ft_collision(int current, int next);
 
 #endif

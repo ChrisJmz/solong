@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:38:35 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/25 12:24:41 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:22:07 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_replace_collectible_right(t_data *vars, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:29:51 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/02/25 15:33:21 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:31:56 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 static void	ft_mlx_put(t_data *data, void *path, int f, int g)
 {
@@ -36,6 +36,8 @@ static void ft_put_content2(t_data *data, int x, int y, char **map)
                 ft_mlx_put(data, data->img.collectible, k, l);
             if (map[l][k] == 'E')
                 ft_mlx_put(data, data->img.exit, k, l);
+            if (map[l][k] == 'X')
+                ft_mlx_put(data, data->img.enemy, k, l);
             l++;
         }
         k++;

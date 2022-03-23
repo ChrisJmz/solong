@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 07:39:59 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/03/01 14:25:21 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:58:36 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 static int	ft_count_size(char *av)
 {

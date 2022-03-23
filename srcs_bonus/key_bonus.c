@@ -6,11 +6,26 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:19:42 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/03/01 14:21:39 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:55:40 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
+
+void	ft_move_nb(t_data *data, int move)
+{
+	char	*cmove;
+
+	cmove = ft_itoa(move);
+	if (cmove != NULL)
+	{
+		mlx_put_image_to_window(data->img.mlx_ptr,
+			data->img.mlx_win, data->img.moves, 0, 0);
+		mlx_string_put(data->img.mlx_ptr, data->img.mlx_win,
+			10, 19, 0x009ACD32, cmove);
+	}
+	free(cmove);
+}
 
 int	ft_input(int keycode, t_data *data)
 {
@@ -30,8 +45,9 @@ int	ft_input(int keycode, t_data *data)
 		ft_printf("moves: \033[33m%d\033[0m\n", ++move);
 	else if (keycode == KEY_D && ft_move_right(data, x, y) == 0)
 		ft_printf("moves: \033[33m%d\033[0m\n", ++move);
-	mlx_put_image_to_window(data->img.mlx_ptr, data->img.mlx_win,
-		data->img.wall, 0, 0);
+	mlx_put_image_to_window(data->img.mlx_ptr,
+		data->img.mlx_win, data->img.wall, 0, 0);
+	ft_move_nb(data, move);
 	return (0);
 }
 

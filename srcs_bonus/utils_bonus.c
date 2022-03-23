@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:06:01 by cmsjus            #+#    #+#             */
-/*   Updated: 2022/03/01 14:33:35 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:03:01 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_file_name2(char *file)
 {
@@ -81,12 +81,15 @@ int	ft_get_nbr(char **str, char c)
 void	ft_end(char *str, t_data *data, int ret)
 {
 	ft_freemap(data->map);
+	mlx_destroy_window(data->img.mlx_ptr, data->img.mlx_win);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.left);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.right);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.moves);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.floor);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.wall);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.collectible);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.exit);
-	mlx_destroy_window(data->img.mlx_ptr, data->img.mlx_win);
+	mlx_destroy_image(data->img.mlx_ptr, data->img.enemy);
 	mlx_destroy_display(data->img.mlx_ptr);
 	free(data->img.mlx_ptr);
 	ft_printf("\033[33m%s\033[0m", str);

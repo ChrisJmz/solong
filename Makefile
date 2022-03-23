@@ -26,38 +26,48 @@ SRC =	srcs/solong.c			\
 		srcs/movements.c		\
 		srcs/collectible.c		\
 
-SRCS_BONUS =	srcs_bonus/solong.c				\
-				srcs_bonus/utils.c				\
-				srcs_bonus/map_utils.c			\
-				srcs_bonus/wall_parsing.c		\
-				srcs_bonus/content_parsing.c	\
-				srcs_bonus/init.c				\
-				srcs_bonus/key.c				\
-				srcs_bonus/movements.c			\
-				srcs_bonus/collectible.c		\
+SRCS_BONUS =	srcs_bonus/solong_bonus.c				\
+				srcs_bonus/utils_bonus.c				\
+				srcs_bonus/map_utils_bonus.c			\
+				srcs_bonus/wall_parsing_bonus.c			\
+				srcs_bonus/content_parsing_bonus.c		\
+				srcs_bonus/init_bonus.c					\
+				srcs_bonus/key_bonus.c					\
+				srcs_bonus/movements_bonus.c			\
+				srcs_bonus/collectible_bonus.c			\
+
+OBJS = $(SRC:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+CC = gcc
+
+RM = rm -rf
 
 INC =   include
 
 LIB = -L ./libft -lft -L ./mlx -lmlx -lXext -lX11
 
+.c.o:
+	$(CC) $(FLAGS) -I$(INC) -c $< -o $(<:.c=.o)
+
 all: $(NAME)
 
-$(NAME):
+$(NAME):	$(OBJS)
 	make -C libft
-	gcc $(FLAGS) -I$(INC) -o $(NAME) $(SRC) $(LIB)
+	$(CC) $(FLAGS) -I$(INC) -o $(NAME) $(OBJS) $(LIB)
 
-bonus:
+bonus:	$(OBJS_BONUS)
 	make -C libft
-	gcc $(FLAGS) -I$(INC) -o $(NAME) $(SRCS_BONUS) $(LIB)
+	$(CC) $(FLAGS) -I$(INC) -o $(NAME) $(OBJS_BONUS) $(LIB)
 
 clean:
-	@rm -rf *.o
-	@rm -rf ./libft/*.o
-	@echo "cleaning .o files"
+	make clean -C libft
+	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@rm -rf ./libft/*.a
+	$(RM) $(LIBFT)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:13:32 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/03/01 14:23:01 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:44:19 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 static int	ft_check_player(char **str)
 {
@@ -78,10 +78,32 @@ static int	ft_check_exit(char **str)
 	return (exit);
 }
 
+static int	ft_check_enemy(char **str)
+{
+	int	i;
+	int	j;
+	int	enemy;
+
+	enemy = 0;
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == 'X')
+				enemy++;
+			j++;
+		}
+		i++;
+	}
+	return (enemy);
+}
+
 int	ft_content(char **str)
 {
 	if (ft_check_player(str) != 1 || ft_check_collectible(str) < 1
-		|| ft_check_exit(str) != 1)
+		|| ft_check_exit(str) != 1 || ft_check_enemy(str) < 1)
 	{
 		ft_freemap(str);
 		return (ft_error("Something's wrong inside the map !"));

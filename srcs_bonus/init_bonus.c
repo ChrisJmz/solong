@@ -6,11 +6,11 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:15:10 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/03/01 14:18:09 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:45:58 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_content_pos_x(char **map, char c)
 {
@@ -73,8 +73,11 @@ void	*init_content(t_data *data)
 	data->img.collectible = ft_put_img(data, "xpm/collectible.xpm");
 	data->img.exit = ft_put_img(data, "xpm/exit.xpm");
 	data->img.right = ft_put_img(data, "xpm/right.xpm");
+	data->img.left = ft_put_img(data, "xpm/left.xpm");
+	data->img.moves = ft_put_img(data, "xpm/TEST.xpm");
+	data->img.enemy = ft_put_img(data, "xpm/enemy.xpm");
 	data->img.mlx_win = mlx_new_window(data->img.mlx_ptr, data->x * GAMESIZE,
-			data->y * GAMESIZE, "so_long");
+			data->y * GAMESIZE, "so_long_bonus");
 	return (data);
 }
 

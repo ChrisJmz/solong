@@ -6,7 +6,7 @@
 /*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:15:23 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/02/21 15:41:23 by cjimenez         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:12:13 by cjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ char	*ft_itoa(int nbr)
 		str[0] = '0';
 	size--;
 	str[size] = '\0';
-	while(nb)
+	while (nb)
 	{
 		str[size - 1] = nb % 10 + '0';
 		nb = nb / 10;
 		size--;
-	} 
+	}
 	return (str);
 }
